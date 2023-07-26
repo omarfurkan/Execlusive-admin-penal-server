@@ -252,6 +252,23 @@ let products = [
     },
 ];
 
+//get all users
+app.get('/api/users', (req, res) => {
+    res.json(users)
+})
+
+//get user
+app.get('/api/users/:id', (req, res) => {
+    const user = users.find(user => user.id === req.params.id)
+    res.json(user)
+})
+
+//add user
+app.post('/api/users', (req, res) => {
+    users.unshift(req.body)
+    res.json();
+})
+
 
 app.listen(9000, () => {
     console.log('Connected to backend')
