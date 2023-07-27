@@ -259,14 +259,43 @@ app.get('/api/users', (req, res) => {
 
 //get user
 app.get('/api/users/:id', (req, res) => {
-    const user = users.find(user => user.id === req.params.id)
+    const user = users.find(user => user.id === perseInt(req.params.id))
     res.json(user)
 })
 
 //add user
 app.post('/api/users', (req, res) => {
     users.unshift(req.body)
-    res.json();
+    res.json(users);
+})
+
+// delete user 
+app.delete('/api/users/:id', (req, res) => {
+    users = users.filter(user => user.id !== parseInt(req.params.id));
+    res.json('user deleted')
+})
+
+// get all products
+app.get('/api/products', (req, res) => {
+    req.json(products)
+})
+
+//get  product
+app.get('/api/products/:id', (req, res) => {
+    const product = products.find(product => product.id === parseInt(req.params.id))
+    res.json(product)
+})
+
+// add product
+app.post('/api/products', (req, res) => {
+    products.unshift(req.body)
+    res.json(products)
+})
+
+//delete product
+app.delete('/api/products/:id', (req, res) => {
+    products = products.filter(product => product.id !== perseInt(req.params.id))
+    res.json('deleted product')
 })
 
 
