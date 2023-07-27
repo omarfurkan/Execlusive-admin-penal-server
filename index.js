@@ -13,7 +13,7 @@ let users = [
         lastName: "Hubbard",
         firstName: "Eula",
         email: "hubbard@gmail.com",
-        phone: "423 452 729",
+        phone: "423 452 111",
         createdAt: "05.07.2023",
         verified: true,
     },
@@ -264,10 +264,10 @@ app.get('/api/users/:id', (req, res) => {
 })
 
 //add user
-app.post('/api/users', (req, res) => {
+app.post("/api/users", (req, res) => {
     users.unshift(req.body)
     res.json(users);
-})
+});
 
 // delete user 
 app.delete('/api/users/:id', (req, res) => {
@@ -277,7 +277,7 @@ app.delete('/api/users/:id', (req, res) => {
 
 // get all products
 app.get('/api/products', (req, res) => {
-    req.json(products)
+    res.json(products)
 })
 
 //get  product
